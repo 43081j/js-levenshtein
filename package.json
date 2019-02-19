@@ -7,10 +7,11 @@
   "author": "James Garbutt (https://github.com/43081j)",
   "scripts": {
     "build": "tsc",
+    "build:test": "tsc -p tsconfig.test.json",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "eslint \"src/**/*.ts\"",
-    "test": "tsc -p tsconfig.test.json && ava \"lib/test/index.js\"",
-    "bench": "matcha lib/test/bench.js"
+    "test": "npm run build:test && ava \"lib/test/index.js\"",
+    "bench": "npm run build:test && matcha lib/test/bench.js"
   },
   "main": "lib/index.js",
   "files": [
