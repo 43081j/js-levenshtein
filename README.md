@@ -1,4 +1,4 @@
-# js-levenshtein-esm [![Build Status](https://travis-ci.org/43081j/js-levenshtein.svg?branch=master)](https://travis-ci.org/43081j/js-levenshtein)
+# js-levenshtein-esm [![Build Status](https://travis-ci.com/43081j/js-levenshtein.svg?branch=master)](https://travis-ci.com/43081j/js-levenshtein)
 
 This is a fork of [js-levenshtein](https://github.com/gustf/js-levenshtein)
 rewritten for ES module consumption.
