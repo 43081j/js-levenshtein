@@ -1,4 +1,9 @@
-# js-levenshtein [![Build Status](https://travis-ci.org/gustf/js-levenshtein.svg?branch=master)](https://travis-ci.org/gustf/js-levenshtein)
+# js-levenshtein-esm [![Build Status](https://travis-ci.org/43081j/js-levenshtein.svg?branch=master)](https://travis-ci.org/43081j/js-levenshtein)
+
+This is a fork of [js-levenshtein](https://github.com/gustf/js-levenshtein)
+rewritten for ES module consumption.
+
+---
 
 A very efficient JS implementation calculating the Levenshtein distance, i.e. the difference between two strings.
 
@@ -56,4 +61,4 @@ Benchmarks was performed with node v8.12.0 on a MacBook Pro 15", 2.9 GHz Intel C
 
 ## License
 
-MIT © Gustaf Andersson
+MIT
