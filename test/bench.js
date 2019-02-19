@@ -1,13 +1,11 @@
-import levenshteinEditDistance = require('levenshtein-edit-distance');
-import fastLevenshtein = require('fast-levenshtein');
-import talisman = require('talisman/metrics/distance/levenshtein');
-import leven = require('leven');
-import levenshtein from '../';
-import paragraphs from './bench-paragraphs';
-import sentences from './bench-sentences';
-import words from './bench-words';
-
-type levenshteinFunc = (a: string, b: string) => number;
+const levenshteinEditDistance = require('levenshtein-edit-distance');
+const fastLevenshtein = require('fast-levenshtein');
+const talisman = require('talisman/metrics/distance/levenshtein');
+const leven = require('leven');
+const levenshtein = require('esm')(module)('../');
+const paragraphs = require('./bench-paragraphs');
+const sentences = require('./bench-sentences');
+const words = require('./bench-words');
 
 /**
  * Executes a given function across the default word data
@@ -15,7 +13,7 @@ type levenshteinFunc = (a: string, b: string) => number;
  * @param {Function} fn Function to execute
  * @return {void}
  */
-function wordBench(fn: levenshteinFunc): void {
+function wordBench(fn) {
   for (let i = 0; i + 1 < words.length; i += 2) {
     const w1 = words[i];
     const w2 = words[i + 1];
@@ -29,7 +27,7 @@ function wordBench(fn: levenshteinFunc): void {
  * @param {Function} fn Function to execute
  * @return {void}
  */
-function sentenceBench(fn: levenshteinFunc): void {
+function sentenceBench(fn) {
   for (let i = 0; i + 1 < sentences.length; i += 2) {
     const s1 = sentences[i];
     const s2 = sentences[i + 1];
@@ -43,7 +41,7 @@ function sentenceBench(fn: levenshteinFunc): void {
  * @param {Function} fn Function to execute
  * @return {void}
  */
-function paragraphBench(fn: levenshteinFunc): void {
+function paragraphBench(fn) {
   for (let i = 0; i + 1 < paragraphs.length; i += 2) {
     const p1 = paragraphs[i];
     const p2 = paragraphs[i + 1];
@@ -53,7 +51,6 @@ function paragraphBench(fn: levenshteinFunc): void {
 
 suite('50 paragraphs, length max=500 min=240 avr=372.5', function() {
   before(function() {
-    // @ts-ignore
     let _t = 0;
     for (let i = 0; i < paragraphs.length; i++) {
       _t += paragraphs[i].toLowerCase().length;
@@ -61,7 +58,7 @@ suite('50 paragraphs, length max=500 min=240 avr=372.5', function() {
   });
 
   bench('js-levenshtein', function() {
-    paragraphBench(levenshtein);
+    paragraphBench(levenshtein.default);
   });
 
   bench('talisman', function() {
@@ -83,7 +80,6 @@ suite('50 paragraphs, length max=500 min=240 avr=372.5', function() {
 
 suite('100 sentences, length max=170 min=6 avr=57.5', function() {
   before(function() {
-    // @ts-ignore
     let _t = 0;
     for (let i = 0; i < sentences.length; i++) {
       _t += sentences[i].toLowerCase().length;
@@ -91,7 +87,7 @@ suite('100 sentences, length max=170 min=6 avr=57.5', function() {
   });
 
   bench('js-levenshtein', function() {
-    sentenceBench(levenshtein);
+    sentenceBench(levenshtein.default);
   });
 
   bench('talisman', function() {
@@ -113,7 +109,6 @@ suite('100 sentences, length max=170 min=6 avr=57.5', function() {
 
 suite('2000 words, length max=20 min=3 avr=9.5', function() {
   before(function() {
-    // @ts-ignore
     let _t = 0;
     for (let i = 0; i < words.length; i++) {
       _t += words[i].toLowerCase().length;
@@ -121,7 +116,7 @@ suite('2000 words, length max=20 min=3 avr=9.5', function() {
   });
 
   bench('js-levenshtein', function() {
-    wordBench(levenshtein);
+    wordBench(levenshtein.default);
   });
 
   bench('talisman', function() {

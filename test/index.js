@@ -1,5 +1,5 @@
 import test from 'ava';
-import levenshtein from '../index';
+import levenshtein from '../';
 
 test('default', (t) => {
   t.is(levenshtein('a', 'b'), 1);

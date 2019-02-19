@@ -7,17 +7,21 @@
   "author": "James Garbutt (https://github.com/43081j)",
   "scripts": {
     "build": "tsc",
-    "build:test": "tsc -p tsconfig.test.json",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "eslint \"src/**/*.ts\"",
-    "test": "npm run build:test && ava \"lib/test/index.js\"",
-    "bench": "npm run build:test && matcha lib/test/bench.js"
+    "test": "ava \"test/index.js\"",
+    "bench": "matcha test/bench.js"
   },
   "main": "lib/index.js",
   "files": [
     "lib/index.js",
     "lib/index.d.ts"
   ],
+  "ava": {
+    "require": [
+      "esm"
+    ]
+  },
   "keywords": [
     "levenshtein",
     "distance",
@@ -43,6 +47,7 @@
     "ava": "^1.2.1",
     "eslint": "^5.14.1",
     "eslint-config-google": "^0.12.0",
+    "esm": "^3.2.5",
     "fast-levenshtein": "^2.0.6",
     "leven": "^2.1.0",
     "levenshtein-edit-distance": "^2.0.3",

@@ -16,6 +16,5 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src/**/*.ts"],
-  "exclude": ["src/test/**/*.ts"]
+  "include": ["src/**/*.ts"]
 }
