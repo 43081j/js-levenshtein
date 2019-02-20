@@ -6,11 +6,11 @@
   "repository": "43081j/js-levenshtein",
   "author": "James Garbutt (https://github.com/43081j)",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc -p .",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "eslint \"src/**/*.ts\"",
     "test": "ava \"test/index.js\"",
-    "bench": "matcha test/bench.js"
+    "test:perf": "(cd perf && npm ci && npm run build && npm test) || exit 1"
   },
   "main": "lib/index.js",
   "files": [
@@ -48,12 +48,7 @@
     "eslint": "^5.14.1",
     "eslint-config-google": "^0.12.0",
     "esm": "^3.2.5",
-    "fast-levenshtein": "^2.0.6",
-    "leven": "^2.1.0",
-    "levenshtein-edit-distance": "^2.0.3",
-    "matcha": "^0.7.0",
     "prettier": "^1.16.4",
-    "talisman": "^0.21.0",
     "typescript": "^3.3.3"
   }
 }

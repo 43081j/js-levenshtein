@@ -1,0 +1,19 @@
+{
+  "name": "perf-test",
+  "private": true,
+  "scripts": {
+    "build": "tsc -p .",
+    "test": "node ./lib/perf/src"
+  },
+  "devDependencies": {
+    "@types/benchmark": "^1.0.31",
+    "@types/node": "^11.9.4",
+    "benchmark": "^2.1.4",
+    "chalk": "^2.4.2",
+    "fast-levenshtein": "^2.0.6",
+    "leven": "^2.1.0",
+    "levenshtein-edit-distance": "^2.0.3",
+    "talisman": "^0.21.0",
+    "typescript": "^3.3.3"
+  }
+}
