@@ -4,7 +4,7 @@
   "scripts": {
     "build": "tsc -p .",
     "test": "node ./lib/perf/src",
-    "test:bench": "npx matcha bench"
+    "test:bench": "npx matcha bench || exit 0"
   },
   "devDependencies": {
     "@types/benchmark": "^1.0.31",
