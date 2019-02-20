@@ -26,9 +26,9 @@ const libs = Object.entries({
 });
 
 const suites = Object.entries({
-  '2000 words, length max=20 min=3 avg=9.5': words,
   '50 paragraphs, length max=500 min=240 avg=372.5': paragraphs,
-  '100 sentences, length max=170 min=6 avg=57.5': sentences
+  '100 sentences, length max=170 min=6 avg=57.5': sentences,
+  '2000 words, length max=20 min=3 avg=9.5': words
 });
 
 const start = process.hrtime();
