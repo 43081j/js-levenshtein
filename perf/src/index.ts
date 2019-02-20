@@ -16,6 +16,17 @@ import * as leven from 'leven';
 // @ts-ignore
 import * as talisman from 'talisman/metrics/distance/levenshtein';
 
+if (!Object.entries) {
+  Object.entries = function(obj: {[key: string]: unknown}) {
+    var ownProps = Object.keys(obj),
+      i = ownProps.length,
+      resArray = new Array(i); // preallocate the Array
+    while (i--) resArray[i] = [ownProps[i], obj[ownProps[i]]];
+
+    return resArray;
+  };
+}
+
 const libs = Object.entries({
   'fast-levenshtein': fastLevenshtein.get,
   'js-levenshtein': jsLevenshtein,
