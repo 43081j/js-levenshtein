@@ -4,7 +4,6 @@
     "module": "commonjs",
     "lib": ["dom", "es2018"],
     "allowJs": true,
-    "declaration": true,
     "outDir": "./lib",
     "strict": true,
     "noImplicitAny": true,
