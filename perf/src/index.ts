@@ -6,6 +6,8 @@ import * as reporter from './reporter';
 
 import jsLevenshteinEsm from '../../src/index';
 // @ts-ignore
+import * as jsLevenshtein from 'js-levenshtein';
+// @ts-ignore
 import * as fastLevenshtein from 'fast-levenshtein';
 // @ts-ignore
 import * as levenshteinEditDistance from 'levenshtein-edit-distance';
@@ -16,6 +18,7 @@ import * as talisman from 'talisman/metrics/distance/levenshtein';
 
 const libs = Object.entries({
   'fast-levenshtein': fastLevenshtein.get,
+  'js-levenshtein': jsLevenshtein,
   'js-levenshtein-esm': jsLevenshteinEsm,
   leven,
   'levenshtein-edit-distance': levenshteinEditDistance,
@@ -23,9 +26,9 @@ const libs = Object.entries({
 });
 
 const suites = Object.entries({
+  '2000 words, length max=20 min=3 avg=9.5': words,
   '50 paragraphs, length max=500 min=240 avg=372.5': paragraphs,
-  '100 sentences, length max=170 min=6 avg=57.5': sentences,
-  '2000 words, length max=20 min=3 avg=9.5': words
+  '100 sentences, length max=170 min=6 avg=57.5': sentences
 });
 
 const start = process.hrtime();
@@ -33,6 +36,7 @@ const start = process.hrtime();
 reporter.onStart();
 for (const [suiteName, data] of suites) {
   const suite = new Benchmark.Suite(suiteName, {
+    minSamples: 10,
     onStart: (e: Benchmark.Event) => {
       // @ts-ignore
       reporter.onSuiteStart(e.currentTarget);
@@ -60,7 +64,7 @@ for (const [suiteName, data] of suites) {
           // @ts-ignore
           const {hz, stats} = benchmark;
           // @ts-ignore
-          benchmark.ops = hz.toFixed(hz < 100 ? 2 : 0);
+          benchmark.ops = hz;
           // @ts-ignore
           benchmark.iterations = stats.sample.length;
           // @ts-ignore

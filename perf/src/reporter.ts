@@ -1,5 +1,6 @@
 import * as _Benchmark from 'benchmark';
 import chalk from 'chalk';
+// @ts-ignore
 import {clearLine, cursorTo, moveCursor} from 'readline';
 import {padBefore, NS_PER_MS} from './utils';
 
@@ -28,7 +29,8 @@ const separator = ' » ';
 
 function writeResult(name: string, ops: number): void {
   console.log(
-    chalk.cyan(padBefore(ops + ' op/s', 22)) + chalk.gray(separator + name)
+    chalk.cyan(padBefore(ops.toFixed(ops < 100 ? 2 : 0) + ' op/s', 22)) +
+      chalk.gray(separator + name)
   );
 }
 
@@ -51,24 +53,42 @@ export function onSuiteStart(suite: Suite): void {
 }
 
 export function onSuiteEnd(suite: Suite): void {
+  const fast = suite.filter('fastest');
   // @ts-ignore
-  const fastest = suite.filter('fastest').map('name');
+  const fastBenches = fast.map('name');
+
+  const fastest =
+    fast.length === 1
+      ? //test
+        // @ts-ignore
+        fast[0]
+      : // don't hate me james
+        // @ts-ignore
+        fast.sort(
+          // @ts-ignore
+          (a, b) => b.ops - a.ops
+        )[0];
+
   // @ts-ignore
-  const slowest = suite.filter('slowest').map('name');
+  const successful = suite.filter('successful').map('name');
   moveCursor(process.stdout, 0, -suite.length);
   cursorTo(process.stdout, 0);
   suite.forEach(({name, ops}: Result) => {
-    if (fastest.includes(name)) {
-      if (process.env.CI && name !== 'js-levenshtein-esm') {
-        process.exit(1);
-      }
+    if (fastest.name === name) {
       name = chalk.bgGreen.white(name);
-    } else if (slowest.includes(name)) {
-      name = chalk.bgRed.white(name);
+      // @ts-ignore
+    } else if (fastBenches.includes(name)) {
+      name = chalk.green(name);
+    } else if (!successful.includes(name)) {
+      name = chalk.red(name);
     }
     writeResult(name, ops);
   });
   console.log();
+
+  if (process.env.CI && !fastBenches.includes('js-levenshtein-esm')) {
+    process.exit(1);
+  }
 }
 
 export function onBenchStart(bench: Benchmark): void {

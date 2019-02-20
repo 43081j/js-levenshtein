@@ -11,6 +11,7 @@
     "benchmark": "^2.1.4",
     "chalk": "^2.4.2",
     "fast-levenshtein": "^2.0.6",
+    "js-levenshtein": "^1.1.6",
     "leven": "^2.1.0",
     "levenshtein-edit-distance": "^2.0.3",
     "talisman": "^0.21.0",

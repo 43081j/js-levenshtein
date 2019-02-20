@@ -6,11 +6,13 @@
   "repository": "43081j/js-levenshtein",
   "author": "James Garbutt (https://github.com/43081j)",
   "scripts": {
+    "clean": "rimraf lib/",
+    "prebuild": "npm run clean",
     "build": "tsc -p .",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "eslint \"src/**/*.ts\"",
     "test": "ava \"test/index.js\"",
-    "test:perf": "(cd perf && npm ci && npm run build && npm test) || exit 1"
+    "test:perf": "cd perf && npm i && npm run build && clear && npm test"
   },
   "main": "lib/index.js",
   "files": [
@@ -49,6 +51,7 @@
     "eslint-config-google": "^0.12.0",
     "esm": "^3.2.5",
     "prettier": "^1.16.4",
+    "rimraf": "^2.6.3",
     "typescript": "^3.3.3"
   }
 }
