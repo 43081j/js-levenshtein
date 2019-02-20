@@ -12,7 +12,8 @@
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "eslint \"src/**/*.ts\"",
     "test": "ava \"test/index.js\"",
-    "test:perf": "cd perf && npm i && npm run build && clear && npm test"
+    "test:perf": "cd perf && npm i && npm run build && clear && npm test",
+    "test:perf-bench": "cd perf && npm i && npm run test:bench"
   },
   "main": "lib/index.js",
   "files": [
