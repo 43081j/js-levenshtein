@@ -3,25 +3,28 @@
   "version": "1.1.6",
   "description": "The most efficient JS implementation calculating the Levenshtein distance, i.e. the difference between two strings.",
   "license": "MIT",
-  "repository": "43081j/js-levenshtein",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/43081j/js-levenshtein.git"
+  },
   "author": "James Garbutt (https://github.com/43081j)",
   "scripts": {
     "build": "tsc",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "build:all": "npm run build && npm run build:esm",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "eslint \"src/**/*.ts\"",
     "test": "ava \"test/index.js\"",
-    "bench": "matcha test/bench.js"
+    "bench": "matcha test/bench.js",
+    "prepare": "npm run build:all",
+    "prepublishOnly": "npm run lint && npm run test"
   },
   "main": "lib/index.js",
+  "module": "esm/index.js",
   "files": [
-    "lib/index.js",
-    "lib/index.d.ts"
+    "lib/*",
+    "esm/*"
   ],
-  "ava": {
-    "require": [
-      "esm"
-    ]
-  },
   "keywords": [
     "levenshtein",
     "distance",
@@ -47,7 +50,6 @@
     "ava": "^1.2.1",
     "eslint": "^5.14.1",
     "eslint-config-google": "^0.12.0",
-    "esm": "^3.2.5",
     "fast-levenshtein": "^2.0.6",
     "leven": "^2.1.0",
     "levenshtein-edit-distance": "^2.0.3",
