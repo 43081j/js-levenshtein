@@ -46,29 +46,29 @@ levenshtein('kitten', 'sitting'); // 3
 ```
 $ npm run test:perf
 
-                      50 paragraphs, length max=500 min=240 avr=372.5
-wait » fast-levenshtein             62 op/s » fast-levenshtein
-wait » js-levenshtein               143 op/s » js-levenshtein
-wait » js-levenshtein-esm           140 op/s » js-levenshtein-esm
-wait » leven                        89 op/s » leven
-wait » levenshtein-edit-distance    92 op/s » levenshtein-edit-distance
-wait » talisman                     100 op/s » talisman
+  50 paragraphs, length max=500 min=240 avr=372.5
+     62 op/s » fast-levenshtein
+    143 op/s » js-levenshtein
+    140 op/s » js-levenshtein-esm
+     89 op/s » leven
+     92 op/s » levenshtein-edit-distance
+    100 op/s » talisman
 
-                      100 sentences, length max=170 min=6 avr=57.5
-wait » fast-levenshtein             1,304 op/s » fast-levenshtein
-wait » js-levenshtein               2,829 op/s » js-levenshtein
-wait » js-levenshtein-esm           2,750 op/s » js-levenshtein-esm
-wait » leven                        1,780 op/s » leven
-wait » levenshtein-edit-distance    1,788 op/s » levenshtein-edit-distance
-wait » talisman                     2,097 op/s » talisman
+  100 sentences, length max=170 min=6 avr=57.5
+    1,304 op/s » fast-levenshtein
+    2,829 op/s » js-levenshtein
+    2,750 op/s » js-levenshtein-esm
+    1,780 op/s » leven
+    1,788 op/s » levenshtein-edit-distance
+    2,097 op/s » talisman
 
-                      2000 words, length max=20 min=3 avr=9.5
-wait » fast-levenshtein             1,952 op/s » fast-levenshtein
-wait » js-levenshtein               3,104 op/s » js-levenshtein
-wait » js-levenshtein-esm           2,908 op/s » js-levenshtein-esm
-wait » leven                        2,351 op/s » leven
-wait » levenshtein-edit-distance    2,381 op/s » levenshtein-edit-distance
-wait » talisman                     2,729 op/s » talisman
+  2000 words, length max=20 min=3 avr=9.5
+    1,952 op/s » fast-levenshtein
+    3,104 op/s » js-levenshtein
+    2,908 op/s » js-levenshtein-esm
+    2,351 op/s » leven
+    2,381 op/s » levenshtein-edit-distance
+    2,729 op/s » talisman
 ```
 
 ## License
