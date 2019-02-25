@@ -7,8 +7,8 @@ const jsLevenshteinEsm = require('../');
 const {paragraphs, sentences, words} = require('esm')(module)('./data');
 
 if (!Object.entries) {
-  Object.entries = function( obj ) {
-    const ownProps = Object.keys( obj );
+  Object.entries = function(obj) {
+    const ownProps = Object.keys(obj);
     let i = ownProps.length;
     const resArray = new Array(i); // preallocate the Array
     while (i--) {
@@ -34,14 +34,10 @@ function getBenchRunner(data) {
   };
 }
 
-const paragraphBench = getBenchRunner(paragraphs);
-const sentenceBench = getBenchRunner(sentences);
-const wordBench = getBenchRunner(words);
-
 const suites = Object.entries({
-  '50 paragraphs, length max=500 min=240 avr=372.5': paragraphBench,
-  '100 sentences, length max=170 min=6 avr=57.5': sentenceBench,
-  '2000 words, length max=20 min=3 avr=9.5': wordBench,
+  '50 paragraphs, length max=500 min=240 avr=372.5': getBenchRunner(paragraphs),
+  '100 sentences, length max=170 min=6 avr=57.5': getBenchRunner(sentences),
+  '2000 words, length max=20 min=3 avr=9.5': getBenchRunner(words)
 });
 
 const libs = Object.entries({
@@ -50,7 +46,7 @@ const libs = Object.entries({
   'js-levenshtein-esm': jsLevenshteinEsm.default,
   leven,
   'levenshtein-edit-distance': levenshteinEditDistance,
-  talisman,
+  talisman
 });
 
 // Run each lib in each suite
