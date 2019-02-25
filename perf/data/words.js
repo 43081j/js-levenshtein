@@ -1998,7 +1998,7 @@ const words = [
   'pleurocentesis',
   'Czechoslovakian',
   'masoned',
-  'readvertisement',
+  'readvertisement'
 ];
 
 module.exports = words;

@@ -2,7 +2,7 @@
   "extends": "google",
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaVersion": "2017",
+    "ecmaVersion": 2018,
     "sourceType": "module"
   },
   "plugins": [
@@ -10,10 +10,16 @@
   ],
   "rules": {
     "indent": "off",
+    "comma-dangle": ["error", "never"],
+    "quotes": ["error", "single", {
+      "avoidEscape": true,
+      "allowTemplateLiterals": false
+    }],
     "no-unused-vars": "off",
     "max-len": ["error", {
       "ignoreTemplateLiterals": true,
-      "ignoreStrings": true
+      "ignoreStrings": true,
+      "ignoreUrls": true
     }],
     "@typescript-eslint/class-name-casing": "error",
     "@typescript-eslint/explicit-function-return-type": "error",
