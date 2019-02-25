@@ -33,7 +33,7 @@ levenshtein('kitten', 'sitting'); // 3
 In the browser:
 
 ```js
-import levenshtein from 'https://unpkg.com/js-levenshtein-esm/esm/index.js';
+import levenshtein from 'https://unpkg.com/js-levenshtein-esm/js-levenshtein.js';
 
 levenshtein('kitten', 'sitting'); // 3
 ```
