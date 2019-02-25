@@ -22,6 +22,7 @@
   "main": "lib/index.js",
   "module": "esm/index.js",
   "files": [
+    "js-levenshtein.js",
     "lib/*",
     "esm/*"
   ],
