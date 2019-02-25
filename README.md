@@ -12,29 +12,37 @@ Based on Wagner-Fischer dynamic programming algorithm, optimized for speed and m
  - loop unrolling on the outer loop
  - remove common prefixes/postfixes from the calculation
  - minimize the number of comparisons
- 
+
 ## Install
 
 ```
-$ npm install --save js-levenshtein
+$ npm i -S js-levenshtein-esm
 ```
 
 
 ## Usage
 
+In Node:
+
 ```js
 const levenshtein = require('js-levenshtein');
 
-levenshtein('kitten', 'sitting');
-//=> 3
+levenshtein('kitten', 'sitting'); // 3
 ```
 
+In the browser:
+
+```js
+import levenshtein from 'https://unpkg.com/js-levenshtein-esm/esm/index.js';
+
+levenshtein('kitten', 'sitting'); // 3
+```
 
 ## Benchmark
 
 ```
 $ npm run bench
-  
+
                       50 paragraphs, length max=500 min=240 avr=372.5
              162 op/s » js-levenshtein
               98 op/s » talisman
