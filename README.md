@@ -25,7 +25,7 @@ $ npm i -S js-levenshtein-esm
 In Node:
 
 ```js
-const levenshtein = require('js-levenshtein');
+const levenshtein = require('js-levenshtein-esm');
 
 levenshtein('kitten', 'sitting'); // 3
 ```
@@ -41,31 +41,32 @@ levenshtein('kitten', 'sitting'); // 3
 ## Benchmark
 
 ```
-$ npm run bench
+$ npm run test:perf
 
                       50 paragraphs, length max=500 min=240 avr=372.5
-             162 op/s Â» js-levenshtein
-              98 op/s Â» talisman
-              94 op/s Â» levenshtein-edit-distance
-              85 op/s Â» leven
-              39 op/s Â» fast-levenshtein
+wait » fast-levenshtein             62 op/s » fast-levenshtein
+wait » js-levenshtein               143 op/s » js-levenshtein
+wait » js-levenshtein-esm           140 op/s » js-levenshtein-esm
+wait » leven                        89 op/s » leven
+wait » levenshtein-edit-distance    92 op/s » levenshtein-edit-distance
+wait » talisman                     100 op/s » talisman
 
                       100 sentences, length max=170 min=6 avr=57.5
-           3,076 op/s Â» js-levenshtein
-           2,024 op/s Â» talisman
-           1,817 op/s Â» levenshtein-edit-distance
-           1,633 op/s Â» leven
-             800 op/s Â» fast-levenshtein
+wait » fast-levenshtein             1,304 op/s » fast-levenshtein
+wait » js-levenshtein               2,829 op/s » js-levenshtein
+wait » js-levenshtein-esm           2,750 op/s » js-levenshtein-esm
+wait » leven                        1,780 op/s » leven
+wait » levenshtein-edit-distance    1,788 op/s » levenshtein-edit-distance
+wait » talisman                     2,097 op/s » talisman
 
                       2000 words, length max=20 min=3 avr=9.5
-           3,119 op/s Â» js-levenshtein
-           2,416 op/s Â» talisman
-           2,141 op/s Â» levenshtein-edit-distance
-           1,855 op/s Â» leven
-           1,260 op/s Â» fast-levenshtein
+wait » fast-levenshtein             1,952 op/s » fast-levenshtein
+wait » js-levenshtein               3,104 op/s » js-levenshtein
+wait » js-levenshtein-esm           2,908 op/s » js-levenshtein-esm
+wait » leven                        2,351 op/s » leven
+wait » levenshtein-edit-distance    2,381 op/s » levenshtein-edit-distance
+wait » talisman                     2,729 op/s » talisman
 ```
-
-Benchmarks was performed with node v8.12.0 on a MacBook Pro 15", 2.9 GHz Intel Core i9
 
 ## License
 
