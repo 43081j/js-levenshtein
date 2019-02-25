@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.com/43081j/js-levenshtein.svg?branch=master)](https://travis-ci.com/43081j/js-levenshtein)
+[![npm version](https://img.shields.io/npm/v/js-levenshtein-esm.svg?style=flat)](https://npmjs.org/package/js-levenshtein-esm "View this project on npm")
+
 # js-levenshtein-esm [![Build Status](https://travis-ci.com/43081j/js-levenshtein.svg?branch=master)](https://travis-ci.com/43081j/js-levenshtein)
 
 This is a fork of [js-levenshtein](https://github.com/gustf/js-levenshtein)
