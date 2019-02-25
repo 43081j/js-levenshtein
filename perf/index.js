@@ -4,7 +4,9 @@ const jsLevenshtein = require('js-levenshtein');
 const talisman = require('talisman/metrics/distance/levenshtein');
 const leven = require('leven');
 const jsLevenshteinEsm = require('../');
-const {paragraphs, sentences, words} = require('esm')(module)('./data');
+const paragraphs = require('./data/paragraphs');
+const sentences = require('./data/sentences');
+const words = require('./data/words');
 
 if (!Object.entries) {
   Object.entries = function(obj) {

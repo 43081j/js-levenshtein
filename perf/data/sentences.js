@@ -101,4 +101,4 @@ const sentences = [
   'My Mum tries to be cool by saying that she likes all the same things that I do.'
 ];
 
-export default sentences;
+module.exports = sentences;

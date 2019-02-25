@@ -2001,4 +2001,4 @@ const words = [
   'readvertisement'
 ];
 
-export default words;
+module.exports = words;
