@@ -1,4 +1,4 @@
-const words = [
+export const words = [
   'cetology',
   'ensand',
   'Sinian',
@@ -2000,5 +2000,3 @@ const words = [
   'masoned',
   'readvertisement'
 ];
-
-module.exports = words;

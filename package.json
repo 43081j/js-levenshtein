@@ -1,8 +1,9 @@
 {
   "name": "js-levenshtein-esm",
-  "version": "1.2.0",
+  "version": "0.0.0-dev",
   "description": "The most efficient JS implementation calculating the Levenshtein distance, i.e. the difference between two strings.",
   "license": "MIT",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/43081j/js-levenshtein.git"
@@ -10,21 +11,17 @@
   "author": "James Garbutt (https://github.com/43081j)",
   "scripts": {
     "build": "tsc",
-    "build:esm": "tsc -p tsconfig.esm.json",
-    "build:all": "npm run build && npm run build:esm",
     "format": "prettier --write \"src/**/*.ts\"",
-    "lint": "eslint \"src/**/*.ts\"",
-    "test": "ava \"test/index.js\"",
-    "test:perf": "matcha perf",
-    "prepare": "npm run build:all",
+    "lint": "eslint src",
+    "test": "c8 --reporter=lcov node --test",
+    "test:perf": "node perf/index.js",
+    "prepare": "npm run build",
     "prepublishOnly": "npm run lint && npm run test"
   },
   "main": "lib/index.js",
-  "module": "esm/index.js",
+  "module": "lib/index.js",
   "files": [
-    "js-levenshtein.js",
-    "lib/*",
-    "esm/*"
+    "lib/"
   ],
   "keywords": [
     "levenshtein",
@@ -46,18 +43,17 @@
     "matching"
   ],
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^1.4.0",
-    "@typescript-eslint/parser": "^1.4.0",
-    "ava": "^1.2.1",
-    "eslint": "^5.14.1",
-    "eslint-config-google": "^0.12.0",
+    "@eslint/js": "^9.22.0",
+    "c8": "^10.1.3",
+    "eslint": "^9.22.0",
     "fast-levenshtein": "^2.0.6",
     "js-levenshtein": "^1.1.6",
     "leven": "^2.1.0",
     "levenshtein-edit-distance": "^2.0.3",
-    "matcha": "^0.7.0",
-    "prettier": "^1.16.4",
+    "prettier": "^3.5.3",
     "talisman": "^0.21.0",
-    "typescript": "^3.3.3"
+    "tinybench": "^4.0.1",
+    "typescript": "^5.8.2",
+    "typescript-eslint": "^8.26.1"
   }
 }

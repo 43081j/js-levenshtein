@@ -1,12 +1,13 @@
-const levenshteinEditDistance = require('levenshtein-edit-distance');
-const fastLevenshtein = require('fast-levenshtein');
-const jsLevenshtein = require('js-levenshtein');
-const talisman = require('talisman/metrics/distance/levenshtein');
-const leven = require('leven');
-const jsLevenshteinEsm = require('../');
-const paragraphs = require('./data/paragraphs');
-const sentences = require('./data/sentences');
-const words = require('./data/words');
+import {Bench} from 'tinybench';
+import levenshteinEditDistance from 'levenshtein-edit-distance';
+import fastLevenshtein from 'fast-levenshtein';
+import jsLevenshtein from 'js-levenshtein';
+import talisman from 'talisman/metrics/distance/levenshtein.js';
+import leven from 'leven';
+import jsLevenshteinEsm from '../lib/index.js';
+import {paragraphs} from './data/paragraphs.js';
+import {sentences} from './data/sentences.js';
+import {words} from './data/words.js';
 
 if (!Object.entries) {
   Object.entries = function(obj) {
@@ -45,7 +46,7 @@ const suites = Object.entries({
 const libs = Object.entries({
   'fast-levenshtein': fastLevenshtein.get,
   'js-levenshtein': jsLevenshtein,
-  'js-levenshtein-esm': jsLevenshteinEsm.default,
+  'js-levenshtein-esm': jsLevenshteinEsm,
   leven,
   'levenshtein-edit-distance': levenshteinEditDistance,
   talisman
@@ -53,9 +54,12 @@ const libs = Object.entries({
 
 // Run each lib in each suite
 for (const [suiteName, benchRunner] of suites) {
-  suite(suiteName, () => {
-    for (const [libName, fn] of libs) {
-      bench(libName, () => benchRunner(fn));
-    }
-  });
+  const bench = new Bench({ name: suiteName });
+  for (const [libName, fn] of libs) {
+    bench.add(libName, () => benchRunner(fn));
+  }
+
+  await bench.run();
+
+  console.table(bench.table());
 }
