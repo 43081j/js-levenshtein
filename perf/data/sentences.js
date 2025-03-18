@@ -1,4 +1,4 @@
-const sentences = [
+export const sentences = [
   'Check back tomorrow; I will see if the book has arrived.',
   'Two seats were vacant.',
   'If I don’t like something, I’ll stay away from it.',
@@ -100,5 +100,3 @@ const sentences = [
   'We have never been to Asia, nor have we visited Africa.',
   'My Mum tries to be cool by saying that she likes all the same things that I do.'
 ];
-
-module.exports = sentences;
